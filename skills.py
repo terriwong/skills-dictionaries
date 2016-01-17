@@ -203,7 +203,18 @@ def sort_by_word_length(words):
 
     """
 
-    return []
+    d = {}
+
+    result = []
+
+    for word in words:
+        d[len(word)] = d.setdefault(len(word), [])
+        d[len(word)].append(word)
+
+    for k, v in sorted(d.iteritems()):
+        result.append((k, v))
+
+    return result
 
 
 def get_sum_zero_pairs(input_list):
