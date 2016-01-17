@@ -29,7 +29,24 @@ def top_characters(input_string):
 
     """
 
-    return []
+    d = {}
+    counter_list = []
+    top_list = []
+
+    for char in input_string:
+        d[char] = d.get(char, 0) + 1
+
+    del d[" "]
+
+    from operator import itemgetter
+    counter_list = sorted(d.items(), key=itemgetter(1))
+    if counter_list[-1][1] == counter_list[-2][1]:
+        top_list = [counter_list[-1][0], counter_list[-2][0]]
+        top_list.sort()
+    else:
+        top_list = [counter_list[-1][0]]
+
+    return top_list
 
 
 # FIXME: fix the "now try doing it with only one call to sort() or sorted()"
