@@ -33,13 +33,17 @@ def top_characters(input_string):
     counter_list = []
     top_list = []
 
+    # build dictionary, delete key=space pair.
     for char in input_string:
         d[char] = d.get(char, 0) + 1
 
     del d[" "]
 
+    # sort key-value pairs by value, from smallest to largest.
     from operator import itemgetter
     counter_list = sorted(d.items(), key=itemgetter(1))
+
+    # find if tie exists.
     if counter_list[-1][1] == counter_list[-2][1]:
         top_list = [counter_list[-1][0], counter_list[-2][0]]
         top_list.sort()
@@ -66,7 +70,14 @@ def adv_alpha_sort_by_word_length(words):
 
     """
 
-    return []
+    d = {}
+
+    for word in words:
+        d[len(word)] = d.setdefault(len(word), [])
+        d[len(word)].append(word)
+        d[len(word)].sort()
+
+    return sorted(d.items())
 
 
 ##############################################################################
