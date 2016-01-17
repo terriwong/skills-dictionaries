@@ -111,7 +111,14 @@ def count_unique(input_string):
 
     """
 
-    return {}
+    d = {}
+
+    words = input_string.split(" ")
+
+    for word in words:
+        d[word] = d.get(word, 0) + 1
+
+    return d
 
 
 def translate_to_pirate_talk(phrase):
