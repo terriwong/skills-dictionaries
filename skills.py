@@ -159,7 +159,34 @@ def translate_to_pirate_talk(phrase):
 
     """
 
-    return ""
+    translation = {'sir': 'matey',
+                   'hotel': 'fleabag inn',
+                   'student': 'swabbie',
+                   'boy': 'matey',
+                   'professor': 'foul blaggart',
+                   'restaurant': 'galley',
+                   'your': 'yer',
+                   'excuse': 'arr',
+                   'students': 'swabbies',
+                   'are': 'be',
+                   'restroom': 'head',
+                   'my': 'me',
+                   'is': 'be',
+                   'man': 'matey'
+                   }
+
+    translated_words = []
+    new_phrase = ""
+
+    words = phrase.split(" ")
+
+    for word in words:
+        word = translation.get(word, word)
+        translated_words.append(word)
+
+    new_phrase = " ".join(translated_words)
+
+    return new_phrase
 
 
 def sort_by_word_length(words):
