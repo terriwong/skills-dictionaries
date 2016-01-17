@@ -246,7 +246,17 @@ def get_sum_zero_pairs(input_list):
 
     """
 
-    return []
+    d = {}
+    new_list = []
+
+    for num in sorted(without_duplicates(input_list)):
+        if num <= 0:
+            d[num] = 0 - num
+
+            if d[num] in input_list:
+                new_list.append([num, d[num]])
+
+    return new_list
 
 
 ##############################################################################
