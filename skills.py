@@ -37,9 +37,7 @@ def without_duplicates(words):
     d = {}
 
     for word in words:
-
-        count = d.setdefault(word, 0)
-        count += 1
+        d[word] = d.get(word, 0) + 1
 
     return d.keys()
 
@@ -70,7 +68,20 @@ def find_unique_common_items(list1, list2):
 
     """
 
-    return []
+    d = {}
+
+    common = []
+
+    combined_list = without_duplicates(list1) + without_duplicates(list2)
+
+    for item in combined_list:
+        d[item] = d.get(item, 0) + 1
+
+    for k, v in d.iteritems():
+        if v > 1:
+            common.append(k)
+
+    return common
 
 
 def count_unique(input_string):
