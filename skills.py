@@ -34,7 +34,14 @@ def without_duplicates(words):
 
     """
 
-    return []
+    d = {}
+
+    for word in words:
+
+        count = d.setdefault(word, 0)
+        count += 1
+
+    return d.keys()
 
 
 def find_unique_common_items(list1, list2):
